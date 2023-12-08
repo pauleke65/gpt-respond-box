@@ -1,0 +1,96 @@
+Table customer {
+  id int [pk]
+  name varchar
+  email varchar
+  preferences text
+  behavior_analysis_results text
+}
+
+Table segment {
+  id int [pk]
+  name varchar
+  description text
+}
+
+Table customer_segment {
+  id int [pk]
+  customer_id int [ref: > customer.id]
+  segment_id int [ref: > segment.id]
+}
+
+Table marketing_content {
+  id int [pk]
+  segment_id int [ref: > segment.id]
+  content text
+  created_at datetime
+}
+
+Table marketing_email_campaign {
+  id int [pk]
+  marketing_content_id int [ref: > marketing_content.id]
+  scheduled_time datetime
+  status varchar
+}
+
+Table response_template {
+  id int [pk]
+  purpose varchar
+  content text
+}
+
+Table automated_action {
+  id int [pk]
+  email_trigger_type varchar
+  response_template_id int [ref: > response_template.id]
+  action_type varchar
+}
+
+Table order {
+  id int [pk]
+  customer_id int [ref: > customer.id]
+  order_status varchar
+  details text
+  update_time datetime
+}
+
+Table email {
+  id int [pk]
+  from_address varchar
+  to_address varchar
+  subject varchar
+  content text
+  received_time datetime
+  processed boolean
+}
+
+Table email_response {
+  id int [pk]
+  email_id int [ref: > email.id]
+  response_content text
+  sent_time datetime
+  automated boolean
+}
+
+Table inquiry {
+  id int [pk]
+  customer_id int [ref: > customer.id]
+  content text
+  response_id int [ref: > email_response.id]
+  created_at datetime
+  status varchar
+}
+
+Table campaign_performance {
+  id int [pk]
+  marketing_email_campaign_id int [ref: > marketing_email_campaign.id]
+  metrics text
+  collected_at datetime
+}
+
+Table ai_model_feedback {
+  id int [pk]
+  ai_model_type varchar
+  data_source_id int [ref: > order.id] // or another entity depending on the feedback source
+  feedback text
+  submitted_at datetime
+}

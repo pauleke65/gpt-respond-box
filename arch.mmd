@@ -1,0 +1,98 @@
+erDiagram
+    CUSTOMER ||--o{ CUSTOMER_SEGMENT : "has"
+    CUSTOMER ||--o{ ORDER : "places"
+    CUSTOMER ||--o{ INQUIRY : "makes"
+    SEGMENT ||--o{ CUSTOMER_SEGMENT : "includes"
+    SEGMENT ||--o{ MARKETING_CONTENT : "targets"
+    MARKETING_CONTENT ||--o{ MARKETING_EMAIL_CAMPAIGN : "used_in"
+    MARKETING_EMAIL_CAMPAIGN ||--o{ CAMPAIGN_PERFORMANCE : "has"
+    RESPONSE_TEMPLATE ||--o{ AUTOMATED_ACTION : "used_in"
+    EMAIL ||--o{ EMAIL_RESPONSE : "responded_with"
+    EMAIL_RESPONSE ||--o{ INQUIRY : "answers"
+    AUTOMATED_ACTION ||--o{ EMAIL : "triggers"
+    ORDER ||--|{ AI_MODEL_FEEDBACK : "provides_feedback_for"
+    
+    CUSTOMER {
+        int id PK
+        varchar name
+        varchar email
+        text preferences 
+        text behavior_analysis_results
+    }
+    SEGMENT {
+        int id PK
+        varchar name
+        text description
+    }
+    CUSTOMER_SEGMENT {
+        int id PK
+        int customer_id FK
+        int segment_id FK
+    }
+    MARKETING_CONTENT {
+        int id PK
+        int segment_id FK
+        text content
+        datetime created_at
+    }
+    MARKETING_EMAIL_CAMPAIGN {
+        int id PK
+        int marketing_content_id FK
+        datetime scheduled_time
+        varchar status
+    }
+    RESPONSE_TEMPLATE {
+        int id PK
+        varchar purpose
+        text content
+    }
+    AUTOMATED_ACTION {
+        int id PK
+        varchar email_trigger_type
+        int response_template_id FK
+        varchar action_type
+    }
+    ORDER {
+        int id PK
+        int customer_id FK
+        varchar order_status
+        text details
+        datetime update_time
+    }
+    EMAIL {
+        int id PK
+        varchar from_address
+        varchar to_address
+        varchar subject
+        text content
+        datetime received_time
+        boolean processed
+    }
+    EMAIL_RESPONSE {
+        int id PK
+        int email_id FK
+        text response_content
+        datetime sent_time
+        boolean automated
+    }
+    INQUIRY {
+        int id PK
+        int customer_id FK
+        text content
+        int response_id FK
+        datetime created_at
+        varchar status
+    }
+    CAMPAIGN_PERFORMANCE {
+        int id PK
+        int marketing_email_campaign_id FK
+        text metrics
+        datetime collected_at
+    }
+    AI_MODEL_FEEDBACK {
+        int id PK
+        varchar ai_model_type
+        int data_source_id FK
+        text feedback
+        datetime submitted_at
+    }

@@ -1,0 +1,93 @@
+```yaml
+project_name: GPT-Respond-Box
+description: >
+  An automated AI mailbox system designed to read, understand, and respond to emails, facilitating automation of customer support, sales, and marketing tasks.
+  
+technologies:
+  frontend:
+    - name: React
+      version: "<version>"
+      purpose: >
+        To build interactive front-end interfaces for configuring and monitoring the GPT-Respond-Box system.
+      task_list:
+        - User dashboard creation
+        - Responsive design implementation
+        - Real-time data presentation
+    - name: Next.js
+      version: "<version>"
+      purpose: >
+        React framework for building server-side rendered and statically generated web pages.
+      task_list:
+        - SEO friendly page creation
+        - Implementing routing mechanisms
+        - Optimizing performance for the frontend
+  
+  backend:
+    - name: Nest JS
+      version: "<version>"
+      purpose: >
+        To create a scalable and maintainable server-side application to handle API requests, processing, and response generation.
+      task_list:
+        - REST API development
+        - Email processing logic
+        - Integration with machine learning models
+  
+  database:
+    - name: Supabase
+      version: "<version>"
+      purpose: >
+        To provide a cloud-hosted PostgreSQL database service for storing and managing application data.
+      task_list:
+        - Data persistence for user and system data
+        - Query optimization
+        - Realtime subscriptions for data changes
+
+  additional:
+    - name: TypeScript
+      version: "<version>"
+      purpose: >
+        JavaScript superset to add strong typing and object-oriented principles to the project for better code quality and maintainability.
+      task_list:
+        - Type definition and enforcement in the codebase
+        - Code transparency and bug reduction
+  
+features:
+  - name: Email Automation
+    goal: Automate reading, understanding, and responding to incoming emails without human intervention.
+    
+  - name: Support Query Handling
+    goal: Auto-generate responses for customer support queries to enhance customer satisfaction.
+    
+  - name: Sales Automation
+    goal: Streamline and automate sales processes, including email campaigns and lead follow-ups.
+    
+  - name: Task Scheduling
+    goal: Provide automated scheduling for emails and other communication-related tasks.
+
+  - name: Reporting and Analytics
+    goal: Enable reporting on the performance of email campaigns and interactions for insightful decision-making.
+  
+  - name: Template Management
+    goal: Manage a collection of response templates for consistency in automated communications.
+
+code_structure:
+  - name: Frontend
+    description: >
+      The frontend will be developed using React and Next.js for dynamic content rendering, SEO optimization, and improved performance. It will host user interfaces for dashboard access, monitoring tools, and system settings.
+
+  - name: Backend
+    description: >
+      The backend will be powered by Nest JS, which interacts with Supabase for data storage and retrieval. It will process API requests, manage email communications, and handle the logic for templating and content delivery.
+
+  - name: Database
+    description: >
+      Supabase will be our primary database solution, storing tables for customers, segments, marketing content, orders, emails, and performance analytics.
+
+  - name: AI/ML Models
+    description: >
+      The AI/ML core will be integrated into the backend, tapping into our database to inform and train our models for email understanding and response generation.
+
+  - name: Shared Types
+    description: >
+      Given that TypeScript is used across both frontend and backend, there will be a shared types repository to ensure consistency in the data structures and facilitate clean inter-service communications.
+```
